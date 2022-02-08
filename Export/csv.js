@@ -9,7 +9,9 @@ var path = require('path');
 //Express Settings
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-app.use(express.urlencoded({ extended: true}))
+app.use(express.urlencoded({ extended: true}));
+app.use(express.static('public'));
+
 // READING AND UPDATING CSV FILE!!!!!
 fs.readdir(__dirname + '/public/data/sheets/', async (err, files) => {
 	if (err) console.log(err)
