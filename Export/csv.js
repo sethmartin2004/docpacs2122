@@ -5,7 +5,8 @@ var sheets = {};
 var express = require('express');
 var app = express();
 var path = require('path');
-
+var sqlite3 = require('sqlite3').verbose();
+var db = new sqlite3.Database('docpac.db');
 //Express Settings
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -77,10 +78,8 @@ app.get('/', function (req, res) {
 app.get('/search', function (req, res) {
     res.render('search')
 })
-app.post('/search', function(req, res){
-    if (req.body.user && req.body.cdata) {
-
-	}
+app.post('/', function(req, res){
+	
 });
 
 // Start Website Server / Open Connections
@@ -88,4 +87,3 @@ var port = 5000
 app.listen(port, function () {
     console.log(`DocPac Search Site active on port ${port}`)
 })
-
