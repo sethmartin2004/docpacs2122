@@ -75,11 +75,19 @@ app.get('/', function (req, res) {
     });
 })
 
-app.get('/search', function (req, res) {
-    res.render('search')
+app.post('/search', function (req, res) {
+	let tableSearch = req.body.category
+		db.all(`SELECT * FROM ${tableSearch};`, (err, results) => {
+			if (err) {
+				console.log(err);
+			} else {
+				console.log(results);
+			}
+			res.render('search', {results: results})
+		})
 })
-app.post('/', function(req, res){
-	
+app.get('/search', function(req, res){
+
 });
 
 // Start Website Server / Open Connections

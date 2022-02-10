@@ -9,27 +9,16 @@
 <body>
     <div class="searchType">
         What category would you like to search for?
-        <form action="Search" method="post">
-            <input type="radio" id="html" name="fav_language" value="HTML">
-            <label for="html">HTML</label><br>
-            <input type="radio" id="css" name="fav_language" value="CSS">
-            <label for="css">CSS</label><br>
-            <input type="radio" id="javascript" name="fav_language" value="JavaScript">
-            <label for="javascript">JavaScript</label><br>
-            <input type="submit" value="Search">
-        </form>
-    </div>
-    <div class="searchDate">
-        What Date would you like to search for?
-        <form action="Search" method="post">
-            <input type="radio" id="html" name="fav_language" value="HTML">
-            <label for="html">HTML</label><br>
-            <input type="radio" id="css" name="fav_language" value="CSS">
-            <label for="css">CSS</label><br>
-            <input type="radio" id="javascript" name="fav_language" value="JavaScript">
-            <label for="javascript">JavaScript</label><br>
-            <input type="submit" value="Search">
-        </form>
+        <form action="search" method="post">
+            <select id="category" name="category" size="5">
+              <option value="changes">Changes</option>
+              <option value="events">Events</option>
+              <option value="goals">Goals</option>
+              <option value="incdoc">Included Documentation</option>
+              <option value="reqdoc">Required Documentation</option>
+            </select><br><br>
+            <input type="submit">
+          </form>
     </div>
 </body>
 </html>
