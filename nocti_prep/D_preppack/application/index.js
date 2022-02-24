@@ -39,21 +39,34 @@ app.get('/additem', function (req, res) {
     res.render('additem')
 })
 app.get('/view', function (req, res) {
-    res.render('view')
+    if (req.query.order) {
+        res.render('view.ejs', {
+
+        });
+    } else {
+        res.render
+    }
 })
 app.post('/neworder', function(req, res){
-    if (req.body.user && req.body.cdata) {
+    console.log(req.body.cName)
+    console.log(req.body.cAddy)
+    if (req.body.cName && req.body.cAddy) {
         var data = JSON.parse(fs.readFileSync('orders.json'));
-        let comment = {
-            name: req.body.user,
-            info: req.body.cdata
+        let order = {
+            orderNumber: data.orders.length,
+            customerName: req.body.cName,
+            customerAddress: req.body.cAddy,
+            items: [],
+            subtotal: 0,
+            tax: 0,
+            total: 0
         }
-        console.log(data)
-        data.comments.push(order)
+        console.log(order)
+        data.orders.push(order)
         fs.writeFile('orders.json', JSON.stringify(data), function(err) {} )
         res.redirect('/')
     } else {
-        res.send('incorrect data entered.')
+        res.send(`ERROR: You left one or more of the fields blank`)
     }
 });
 
