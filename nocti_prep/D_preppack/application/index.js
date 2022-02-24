@@ -24,8 +24,6 @@ class Comment {
         this.info = commentData
     }
 }
-comments = [];
-
 // Create a root endpoint
 app.get('/', function (req, res) {
     var orderFile = JSON.parse(fs.readFileSync('orders.json'));
