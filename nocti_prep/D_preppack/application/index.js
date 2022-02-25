@@ -61,6 +61,21 @@ app.post('/neworder', function(req, res){
             tax: 0,
             total: 0
         }
+
+        app.post('/additem', function(req, res){
+            console.log(req.body.cName)
+            console.log(req.body.cAddy)
+            if (req.body.cName && req.body.cAddy) {
+                var data = JSON.parse(fs.readFileSync('orders.json'));
+                let order = {
+                    orderNumber: data.orders.length,
+                    customerName: req.body.cName,
+                    customerAddress: req.body.cAddy,
+                    items: [],
+                    subtotal: 0,
+                    tax: 0,
+                    total: 0
+                }
         console.log(order)
         data.orders.push(order)
         fs.writeFile('orders.json', JSON.stringify(data), function(err) {} )
