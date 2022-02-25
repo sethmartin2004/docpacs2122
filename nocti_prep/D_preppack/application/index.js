@@ -70,6 +70,35 @@ app.post('/neworder', function(req, res){
     }
 });
 
+app.get('/view', function (req, res) {
+    if (req.query.order) {
+      console.log(orderNumber)
+      console.log(customerName)
+      if (req.body.cName && req.body.cAddy) {
+          var data = JSON.parse(fs.readFileSync('orders.json'));
+          let order = {
+              orderNumber: data.orders.length,
+              customerName: req.body.cName,
+              customerAddress: req.body.cAddy,
+              items: [],
+              subtotal: 0,
+              tax: 0,
+              total: 0
+          }
+          console.log(orderNumber)
+          console.log(customerName)
+          console.log(customerAddress)
+          console.log(items)
+          console.log(subtotal);
+          console.log(tax)
+          console.log(total)
+            res.redirect('/')
+    });
+  } else {
+    console.log("invalid order number");
+  }
+
+
 // Start Website Server / Open Connections
 var port = 5000
 app.listen(port, function () {
